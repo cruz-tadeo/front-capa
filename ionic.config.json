@@ -1,0 +1,7 @@
+{
+  "name": "front-capa",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
