@@ -1,17 +1,28 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content [fullscreen]="true" class="content" *ngIf="identity == null">
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-card color="light" >  
+    <ion-card-content color="light">
+      <ion-img src="assets/images/logo.jpg"></ion-img>
+    </ion-card-content>
+  </ion-card>
+<form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+        <ion-col>
+          <ion-item color="primary">
+            <ion-input type="number" name="celular"  #celular="ngModel" [(ngModel)]="user.celular" placeholder="Numero de celular"required max="10"></ion-input>
+            <ion-label *ngIf="!celular.valid && celular.touched">El celular no es valido</ion-label>
+          </ion-item>
+        </ion-col>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+        <ion-col>
+          <ion-item color="primary">
+            <ion-input type="password" name="password" #password="ngModel" [(ngModel)]="user.password" placeholder="Contraseña" required></ion-input>
+            <ion-label *ngIf="!password.valid && password.touched">La contraseña no es valida</ion-label>
+          </ion-item>
+        </ion-col>
+          <ion-button type="submit" expand="full" color="primary">Login</ion-button>
+        <div>
+          <p class="ion-text-center texto" (click)="abrirTab()">¿Olvidaste tu contraseña?</p>
+          <p class="ion-text-center texto" (click)="abrirTab()">¿Aún no tienes cuenta?</p>
+        </div>
+</form>
 </ion-content>
